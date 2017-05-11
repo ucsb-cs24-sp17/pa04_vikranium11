@@ -222,8 +222,8 @@ namespace main_savitch_5
         double operator( ) (double x) const { return eval(x); }
 	
     private:
-	polynode *head_ptr;             // Head pointer for list of terms
-	polynode *tail_ptr;             // Tail pointer for list of terms
+        polynode *head_ptr;             // Head pointer for list of terms
+        polynode *tail_ptr;             // Tail pointer for list of terms
         mutable polynode *recent_ptr;   // Most recently used term
         unsigned int current_degree;    // Current degree of the polynomial
         // A private member function to aid the other functions:

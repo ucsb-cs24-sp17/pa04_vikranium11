@@ -1,0 +1,20 @@
+
+START OF TEST 1:
+Testing basic1: constructor, coefficient, degree (15 points).
+I will now test the default constructor. After initializing
+with the default constructor, a the coefficient member
+function should always return zero.
+Test passed.
+
+I will now test the constructor with arguments.
+Test passed.
+
+I will now test constructor like this: polynomial p(0.0, 3).
+After initializing this way, a polynomial
+should have all zero coefficients.
+Test passed.
+
+Test 1 got 15 points out of a possible 15.
+END OF TEST 1.
+
+Completed test 1; result: 15

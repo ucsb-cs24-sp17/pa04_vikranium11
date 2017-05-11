@@ -11,7 +11,45 @@ using namespace std;
 namespace main_savitch_5
 {
   // CONSTRUCORS AND DESTRUCTOR
-  polynomial::polynomial(double c, unsigned int exponent){}
+  polynomial::polynomial(double c, unsigned int exponent){
+    head_ptr = new polynode;
+    if(c>0){
+      current_degree = exponent;
+    }
+    else{
+      current_degree = 0;
+    }
+
+    
+    if (c == 0) {
+      tail_ptr = head_ptr;
+      head_ptr -> set_exponent(0);
+      head_ptr -> set_coef(0);
+    }
+
+    if(exponent ==0 && c!=0){
+      tail_ptr = head_ptr;
+      head_ptr -> set_coef(c);
+      head_ptr -> set_exponent(0);
+    }
+
+    recent_ptr = head_ptr;
+    for(int i =0; i < exponent; i++){
+      polynode *p1 = new polynode;
+      recent_ptr->set_fore(p1);
+      p1 -> set_exponent(i+1);
+      if((i+1) != exponent){
+	p1-> set_coef(0);
+      }
+      else{
+	p1-> set_coef(c);
+	tail_ptr = p1;
+      }
+      recent_ptr = p1;
+    }
+
+      
+  }
   polynomial::polynomial(const polynomial& source){}
   polynomial::~polynomial( ){}
 
@@ -22,7 +60,19 @@ namespace main_savitch_5
   void polynomial::clear( ){}
 
   // CONSTANT MEMBER FUNCTIONS
-  double polynomial:: coefficient(unsigned int exponent) const{}
+  double polynomial:: coefficient(unsigned int exponent) const{
+    if(exponent <= current_degree){
+      polynode *temp = head_ptr;
+      for(int i = 0; i<exponent; i++){
+	temp = temp->fore();
+      }
+      return temp -> coef();
+    }
+    else{
+      return 0;
+    }
+
+  }
   polynomial polynomial::derivative( ) const{}
   double polynomial::eval(double x) const{}
   void polynomial::find_root(
@@ -48,19 +98,30 @@ namespace main_savitch_5
   // PRIVATE MEMBER FUNCTION (to aid the other functions)
   void polynomial::set_recent(unsigned int exponent) const{
     if(exponent == 0){
-      recent_ptr->fore();
+      recent_ptr = head_ptr;
     }
     else if(exponent >= current_degree){
-      recent_ptr->back();
+      recent_ptr = tail_ptr;
     }
-    else if(exponent!=0 && exponent< recent_ptr->exponent()){
-      //recent_ptr->
+    else if(exponent!=0 && exponent < recent_ptr->exponent() && exponent < current_degree){
+      //Iterates backward until the pointer points to the desired node
+      polynode *temp_ptr = tail_ptr;
+      while(temp_ptr->exponent() != exponent){
+	temp_ptr->back();
+      }
+      recent_ptr = temp_ptr;
     }
-    else{
-      recent_ptr->set_exponent(exponent);
+    else if(exponent!=0 && exponent > recent_ptr->exponent() && exponent < current_degree){
+      //Iterates forward until the pointer points to the desired node
+      polynode *temp_ptr = recent_ptr;
+      while(temp_ptr->exponent() != exponent){
+	temp_ptr->fore();
+      }
+      recent_ptr = temp_ptr;
     }
+  }
 
-  }  
 
+  
 }
   

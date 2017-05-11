@@ -1,0 +1,47 @@
+ /usr/bin/valgrind --leak-check=full ./polyexam2 1 > test_1_valgrind.txt
+ ==8070== Memcheck, a memory error detector
+ ==8070== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+ ==8070== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+ ==8070== Command: ./polyexam2 1
+ ==8070==
+ ==8070==
+ ==8070== HEAP SUMMARY:
+ ==8070==     in use at exit: 72,992 bytes in 10 blocks
+ ==8070==   total heap usage: 10 allocs, 0 frees, 72,992 bytes allocated
+ ==8070==
+ ==8070== 32 bytes in 1 blocks are definitely lost in loss record 1 of 7
+ ==8070==    at 0x4C29216: operator new(unsigned long) (vg_replace_malloc.c:334)
+ ==8070==    by 0x400CD4: main_savitch_5::polynomial::polynomial(double, unsigned int) (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x4015D9: test1() (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x4039B6: run_a_test(int, char const*, double (*)(), int) (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x403BC5: main (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==
+ ==8070== 32 bytes in 1 blocks are definitely lost in loss record 2 of 7
+ ==8070==    at 0x4C29216: operator new(unsigned long) (vg_replace_malloc.c:334)
+ ==8070==    by 0x400CD4: main_savitch_5::polynomial::polynomial(double, unsigned int) (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x401607: test1() (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x4039B6: run_a_test(int, char const*, double (*)(), int) (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x403BC5: main (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==
+ ==8070== 96 (32 direct, 64 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 7
+ ==8070==    at 0x4C29216: operator new(unsigned long) (vg_replace_malloc.c:334)
+ ==8070==    by 0x400CD4: main_savitch_5::polynomial::polynomial(double, unsigned int) (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x4015F2: test1() (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x4039B6: run_a_test(int, char const*, double (*)(), int) (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x403BC5: main (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==
+ ==8070== 128 (32 direct, 96 indirect) bytes in 1 blocks are definitely lost in loss record 6 of 7
+ ==8070==    at 0x4C29216: operator new(unsigned long) (vg_replace_malloc.c:334)
+ ==8070==    by 0x400CD4: main_savitch_5::polynomial::polynomial(double, unsigned int) (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x40161F: test1() (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x4039B6: run_a_test(int, char const*, double (*)(), int) (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==    by 0x403BC5: main (in /fs/student/vikranium/cs24/pa04_vikranium11/polyexam2)
+ ==8070==
+ ==8070== LEAK SUMMARY:
+ ==8070==    definitely lost: 128 bytes in 4 blocks
+ ==8070==    indirectly lost: 160 bytes in 5 blocks
+ ==8070==      possibly lost: 0 bytes in 0 blocks
+ ==8070==    still reachable: 0 bytes in 0 blocks
+ ==8070==         suppressed: 72,704 bytes in 1 blocks
+ ==8070==
+ 
