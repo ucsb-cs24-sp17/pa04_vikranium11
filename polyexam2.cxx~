@@ -459,6 +459,9 @@ double test10( )
     cout << "Testing copy constructor:" << endl;
     ptr = new polynomial(p);
     p.assign_coef(1.0, 3); // correctly assigned
+    cout << (*ptr).degree() << endl; //correct degree given
+    cout << (*ptr).coefficient(0) << endl; //SEGFAULTS HERE
+    cout << "10 1.1 -2.2 1 0 -5.5" << endl;
     if (!correct(*ptr, 5, c)) return 0;
     
     return POINTS[10];
